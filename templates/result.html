@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+        <div class="custom-select" style="width:200px">
+            <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+              <option value="/Square/{{end}}" {{selected[0]}}>Square</option>
+              <option value="/Odd/{{end}}" {{selected[1]}}>Odd</option>
+              <option value="/Even/{{end}}" {{selected[2]}}>Even</option>
+              <option value="/Logarithm/{{end}}" {{selected[3]}}>Logarithm</option>
+            </select>
+            <input type="number" id="end" name="end" min="1" max="500" value={{end}} onchange="this.value && (window.location = this.value)">
+        </div>
+        <table>
+            <tbody>
+                {{table_data}}
+            </tbody>
+        </table>
+    </body>
+</html>

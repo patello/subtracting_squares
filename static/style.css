@@ -1,0 +1,18 @@
+table{
+    margin: auto;
+    width: 50%;
+}
+.custom-select{
+    margin: auto;
+    width: 50%;
+}
+td{
+    text-align: center;
+}
+td.resloss{
+    background-color: lightcoral;
+}
+
+td.reswin{
+    background-color: palegreen;
+}
