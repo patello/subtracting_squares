@@ -1,22 +1,14 @@
 class Game:
     def __init__(self,span=[0,100],sub_fun="Square"):
         self.span=span
-        if sub_fun=="Square":
-            def f(x):
-                return pow(x,2)
-        if sub_fun=="Odd":
-            def f(x):
-                return 1 + (x-1)*2
-        if sub_fun=="Even":
-            def f(x):
-                return x*2
-        if sub_fun=="Identity":
-            def f(x):
-                return x
-        if sub_fun=="Logarithm":
-            def f(x):
-                return pow(10,x-1)
-        self.sub_fun = f
+        self.func_dict = {
+            "Square":lambda x: pow(x,2),
+            "Odd":lambda x: 1 + (x-1)*2,
+            "Even":lambda x: x*2,
+            "Identity":lambda x: x,
+            "Logarithm":lambda x: pow(10,x-1)
+            }
+        self.sub_fun = self.func_dict[sub_fun]
     def calculate(self):
         #winning_pos is an array. It determines if landing in the current position will give you a win.
         #True = Win, False = Loss, None = Not yet determined. As per the rules of the game, 0 is initialized as False.

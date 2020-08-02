@@ -10,6 +10,12 @@ def index():
 @app.route('/<string:fun>/<int:end>')
 def game_res(end,fun):
     game=Game(span=[0,end],sub_fun=fun)
+    
+    selector_data = ""
+    for opt in game.func_dict.keys():
+        selected = "selected" if fun == opt else ""
+        selector_data+="<option value=\"/"+opt+"/"+str(game.span[1])+"\" "+selected+">"+opt+"</option>"
+    print(selector_data)
     result=game.calculate()
     table_data = ""
     for x in range(1,end+1):
@@ -22,4 +28,9 @@ def game_res(end,fun):
         table_data += "<td class=\""+cssclass+"\">"+str(x)+"</td>"
         if (x-1)%10 == 9 or x == end+1:
             table_data += "</tr>"
-    return render_template('result.html',table_data=Markup(table_data),end=end,selected=["selected" if fun=="Square" else "","selected" if fun=="Odd" else "","selected" if fun=="Even" else "","selected" if fun=="Logarithm" else ""])
+    return render_template(
+        'result.html',
+        table_data=Markup(table_data),
+        selector_data=Markup(selector_data),
+        end=end
+    )
