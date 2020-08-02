@@ -15,7 +15,7 @@ def game_res(end,fun):
     for opt in game.func_dict.keys():
         selected = "selected" if fun == opt else ""
         selector_data+="<option value=\"/"+opt+"/"+str(game.span[1])+"\" "+selected+">"+opt+"</option>"
-    print(selector_data)
+    
     result=game.calculate()
     table_data = ""
     for x in range(1,end+1):
